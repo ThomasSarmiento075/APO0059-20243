@@ -1,1 +1,3 @@
 Tarea correspondiente al primer corte...
+Thomas Alejandro Sarmiento Velandia
+Cod. 20231005075
