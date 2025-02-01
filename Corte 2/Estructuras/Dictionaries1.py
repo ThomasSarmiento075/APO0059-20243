@@ -1,118 +1,84 @@
-### sensors =  {"living room": 21, "kitchen": 23, "bedroom": 20, "pantry": 22}
-### num_cameras = {"backyard": 6,  "garage": 2, "driveway": 1}
+# Información inicial para representar diferentes escenarios
+sensors = {"living room": 21, "kitchen": 23, "bedroom": 20, "pantry": 22}
+num_cameras = {"backyard": 6, "garage": 2, "driveway": 1}
+translations = {"mountain": "orod", "bread": "bass", "friend": "mellon", "horse": "roch"}
 
-### print(sensors)
-### print(num_cameras)
-### translations = {"mountain": "orod", "bread": "bass", "friend": "mellon", "horse": "roch" }
-### print(translations)
+print("Sensors:", sensors)
+print("Number of cameras:", num_cameras)
+print("Translations:", translations)
 
-### Verifiying an error:
-### powers = {[1, 2, 4, 8, 16]: 2, [1, 3, 9, 27, 81]: 3}
-### print(powers)
+# Arreglando un problema donde las claves eran listas, que no son válidas
+# Se reemplazan por tuplas para evitar errores
+##powers = {(1, 2, 4, 8, 16): 2, (1, 3, 9, 27, 81): 3}
+##print("Powers:", powers)
 
-### children = {"von Trapp": ["Johannes", "Rosmarie", "Eleonore"] , "Corleone": ["Sonny", "Fredo", "Michael"]}
-### print(children)
+# Relación de familias y nombres de sus hijos
+children = {"von Trapp": ["Johannes", "Rosmarie", "Eleonore"], "Corleone": ["Sonny", "Fredo", "Michael"]}
+print("Children:", children)
 
-### my_empty_dictionary = {}
-### print(my_empty_dictionary)
+# Un ejemplo de cómo se ve un diccionario vacío
+my_empty_dictionary = {}
+print(my_empty_dictionary)
 
-### menu = {"oatmeal": 3, "avocado toast": 6, "carrot juice": 5, "blueberry muffin": 2}
-### print("Before: ", menu)
-### menu["cheesecake"] = 8
-### print("After", menu)
-### animals_in_zoo = {"dinosaurs": 0}
-### animals_in_zoo = {"dinosaurs": 0}
-### animals_in_zoo = {"horses": 2}
-### print(animals_in_zoo)
+# Agregando un nuevo elemento a un menú de precios
+menu = {"oatmeal": 3, "avocado toast": 6, "carrot juice": 5, "blueberry muffin": 2}
+print("Menu before:", menu)
+menu["cheesecake"] = 8
+print("Menu after adding cheesecake:", menu)
 
+# Reescribiendo el contenido del diccionario con nuevos datos
+animals_in_zoo = {"dinosaurs": 0} 
+animals_in_zoo = {"horses": 2}  # Ahora solo incluye caballos
+print(animals_in_zoo)
 
-### Add multiple keys
-### sensors = {"living room": 21, "kitchen": 23, "bedroom": 20}
-### print("Before", sensors)
+# Ampliando el alcance de los datos en el diccionario `sensors`
+sensors.update({"pantry": 22, "guest room": 25, "patio": 34})
+print("Updated sensors:", sensors)
 
-### If we wanted to add 3 new rooms, we could use:
-### sensors.update({"pantry": 22, "guest room": 25, "patio": 34})
-### print("After", sensors)
+# Agregar nuevos usuarios a un sistema de identificaciones
+user_ids = {"teraCoder": 9018293, "proProgrammer": 119238}
+print("User IDs before update:", user_ids)
+user_ids.update({"theLooper": 138475, "stringQueen": 85739})
+print("User IDs after update:", user_ids)
 
+# Modificando un valor específico en el menú
+menu = {"oatmeal": 3, "avocado toast": 6, "carrot juice": 5, "blueberry muffin": 2}
+print("Menu before change:", menu)
+menu["oatmeal"] = 5
+print("Menu after changing 'oatmeal':", menu)
 
-### user_ids = {"teraCoder": 9018293, "proProgrammer": 119238}
-### print(user_ids)
-### user_ids.update({"theLooper": 138475, "stringQueen": 85739})
-### print(user_ids)
+# Editando y expandiendo un diccionario con información de ganadores de premios
+oscar_winners = {
+    "Best Picture": "La La Land", 
+    "Best Actor": "Casey Affleck", 
+    "Best Actress": "Emma Stone", 
+    "Animated Feature": "Zootopia"
+}
+print("Oscar winners before update:", oscar_winners)
+oscar_winners.update({"Supporting Actress": "Viola Davis"})  # Se agrega una nueva categoría
+print("Oscar winners after adding 'Supporting Actress':", oscar_winners)
+oscar_winners["Best Picture"] = "Moonlight"  # Ajustando un error en el dato original
+print("Oscar winners after correcting 'Best Picture':", oscar_winners)
 
-### Overwrite Values ##
-### We know that we can add a key by using the following syntax:
-### menu["banana"] = 3
-### menu = {"oatmeal": 3, "avocado toast": 6, "carrot juice": 5, "blueberry muffin": 2}
-### print("Before: ", menu)
-### menu["oatmeal"] = 5
-### print("After", menu)
-
-### Notice the value of "oatmeal" has now changed to 5.
-### oscar_winners = {"Best Picture": "La La Land", "Best Actor": "Casey Affleck", "Best Actress": "Emma Stone", "Animated Feature": "Zootopia"}
-### print("Before", oscar_winners)
-### print()
-### oscar_winners.update({"Supporting Actress": "Viola Davis"})
-### print("After1", oscar_winners)
-### print()
-### oscar_winners["Best Picture"] = "Moonlight"
-### print("After2", oscar_winners)
-
-
-### Dict Comprehensions
-### Let’s say we have two lists that we want to combine into a 
-### dictionary, like a list of students and a list of their heights, 
-### in inches:
-
-
-
+# Crear un diccionario utilizando listas como base
 names = ['Jenny', 'Alexus', 'Sam', 'Grace']
 heights = [61, 70, 67, 64]
+students = {key: value for key, value in zip(names, heights)}
+print("Students:", students)
 
+drinks = ["espresso", "chai", "decaf", "drip"]
+caffeine = [64, 40, 0, 120]
+drinks_to_caffeine = {key: value for key, value in zip(drinks, caffeine)}
+print("Drinks to caffeine:", drinks_to_caffeine)
 
-
-
-### Python allows you to create a dictionary using 
-### a dict comprehension, with this syntax:
-
-### zipStudents = zip(names, heights)
-### print("zipStudents: ", zipStudents)
-
-### students = {key:value for key, value in zip(names, heights)}
-### students is now {'Jenny': 61, 'Alexus': 70, 'Sam': 67, 'Grace': 64}
-### print(students)
-
-### zip() combines two lists into an iterator of tuples with the list elements paired together. This dict comprehension:
-
-### drinks = ["espresso", "chai", "decaf", "drip"]
-### caffeine = [64, 40, 0, 120]
-
-### zipped_drinks = zip(drinks, caffeine)
-### print(zipped_drinks)
-
-### drinks_to_caffeine = {key:value for key, value in zipped_drinks}
-### print(drinks_to_caffeine)
-
-
-
-
-
-
+# Introducir y ajustar datos en un diccionario de canciones populares
 songs = ["Like a Rolling Stone", "Satisfaction", "Imagine", "What's Going On", "Respect", "Good Vibrations"]
 playcounts = [78, 29, 44, 21, 89, 5]
-plays = {key:value for key, value in zip(songs, playcounts)}
-print(plays)
-plays.update({"Purple Haze": 1})
-plays.update({"Respect": 94})
-print("After: ", plays)
+plays = {key: value for key, value in zip(songs, playcounts)}
+print("Plays before update:", plays)
+plays.update({"Purple Haze": 1, "Respect": 94})  # Modificar y añadir datos en una sola línea
+print("Plays after update:", plays)
+
+# Creando una biblioteca para organizar canciones
 library = {"The Best Songs": plays, "Sunday Feelings": {}}
-print(library)
-
-
-
-
-
-
-
-
-
+print("Library:", library)
