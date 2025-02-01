@@ -1,119 +1,157 @@
-### Get A Key
-### you can access the values in it by providing the key:
+# Acceder a valores usando claves
+# Puedes acceder a los valores de un diccionario proporcionando la clave correspondiente:
 
-### building_heights = {"Burj Khalifa": 828, "Shanghai Tower": 632, "Abraj Al Bait": 601, "Ping An": 599, "Lotte World Tower": 554.5, "One World Trade": 541.3}
-### print(building_heights["Burj Khalifa"]) # Prints 828
-### print(building_heights["Ping An"]) # Prints 599
+building_heights = {
+    "Burj Khalifa": 828,
+    "Shanghai Tower": 632,
+    "Abraj Al Bait": 601,
+    "Ping An": 599,
+    "Lotte World Tower": 554.5,
+    "One World Trade": 541.3
+}
 
-### zodiac_elements = {"water": ["Cancer", "Scorpio", "Pisces"], "fire": ["Aries", "Leo", "Sagittarius"], "earth": ["Taurus", "Virgo", "Capricorn"], "air":["Gemini", "Libra", "Aquarius"]}
-### print(zodiac_elements["earth"])
-### print(zodiac_elements["fire"])
+print(building_heights["Burj Khalifa"])  # Imprime 828
+print(building_heights["Ping An"])      # Imprime 599
 
-### Get an Invalid Key
+zodiac_elements = {
+    "water": ["Cáncer", "Escorpio", "Piscis"],
+    "fire": ["Aries", "Leo", "Sagitario"],
+    "earth": ["Tauro", "Virgo", "Capricornio"],
+    "air": ["Géminis", "Libra", "Acuario"]
+}
 
-### building_heights = {"Burj Khalifa": 828, "Shanghai Tower": 632, "Abraj Al Bait": 601, "Ping An": 599, "Lotte World Tower": 554.5, "One World Trade": 541.3}
-### print(building_heights["Landmark 81"])
+print(zodiac_elements["earth"])  # Imprime ['Tauro', 'Virgo', 'Capricornio']
+print(zodiac_elements["fire"])   # Imprime ['Aries', 'Leo', 'Sagitario']
 
-### ##One way to avoid this error is to first check if the key exists in the dictionary:
-### key_to_check = "Landmark 81"
+# Manejo de claves inexistentes
+# Intentar acceder a una clave que no existe genera un KeyError:
 
-### if key_to_check in building_heights:
-###   print(building_heights["Landmark 81"])
+# Descomentar la siguiente línea provocará un error:
+# print(building_heights["Landmark 81"])  # KeyError
 
-### zodiac_elements = {"water": ["Cancer", "Scorpio", "Pisces"], "fire": ["Aries", "Leo", "Sagittarius"], "earth": ["Taurus", "Virgo", "Capricorn"], "air":["Gemini", "Libra", "Aquarius"]}
+# Para evitar errores, verifica si la clave existe antes de acceder a ella:
+key_to_check = "Landmark 81"
+if key_to_check in building_heights:
+    print(building_heights[key_to_check])
+else:
+    print(f"{key_to_check} no se encuentra en las alturas de los edificios.")
 
-### zodiac_elements["energy"] = "Not a Zodiac element"
+# Agregar un nuevo par clave-valor
+zodiac_elements["energy"] = "No es un elemento del zodiaco"
+if "energy" in zodiac_elements:
+    print(zodiac_elements["energy"])  # Imprime "No es un elemento del zodiaco"
 
-### if "energy" in zodiac_elements:
-###   print(zodiac_elements["energy"])
+# Usando el método get()
+# Obtener un valor de forma segura sin generar un error si la clave no existe:
+print(building_heights.get("Shanghai Tower"))  # Imprime 632
+print(building_heights.get("My House"))        # Imprime None
 
-### Safely Get a Key
-### building_heights = {"Burj Khalifa": 828, "Shanghai Tower": 632, "Abraj Al Bait": 601, "Ping An": 599, "Lotte World Tower": 554.5, "One World Trade": 541.3}
+# Valores predeterminados con get()
+user_ids = {
+    "teraCoder": 100019,
+    "pythonGuy": 182921,
+    "samTheJavaMaam": 123112,
+    "lyleLoop": 102931,
+    "keysmithKeith": 129384
+}
 
-### this line will return 632:
-### building_heights.get("Shanghai Tower")
+tc_id = user_ids.get("teraCoder", 1000)
+print(tc_id)  # Imprime 100019
 
-### #this line will return None:
-### building_heights.get("My House")
+stack_id = user_ids.get("superStackSmash", 100000)
+print(stack_id)  # Imprime 100000
 
-### user_ids = {"teraCoder": 100019, "pythonGuy": 182921, "samTheJavaMaam": 123112, "lyleLoop": 102931, "keysmithKeith": 129384}
-### user_ids.get("teraCoder")
+# Eliminar elementos con pop()
+# El método pop() elimina un par clave-valor y devuelve el valor eliminado:
+raffle = {
+    223842: "Oso de peluche",
+    872921: "Entradas para un concierto",
+    320291: "Canasta de regalo",
+    412123: "Collar",
+    298787: "Máquina para hacer pasta"
+}
 
-### if user_ids.get("teraCoder") == None:
-###    tc_id = 1000
-### else: 
-###    tc_id = user_ids.get("teraCoder")
+print(raffle.pop(320291, "Sin premio"))  # Imprime "Canasta de regalo"
+print(raffle)                            # Diccionario actualizado
 
-### print(tc_id)
+print(raffle.pop(100000, "Sin premio"))  # Imprime "Sin premio"
+print(raffle)                            # Elementos restantes
 
-### if user_ids.get("superStackSmash") == None:
-###      stack_id = 100000
+# Ejemplo de uso de pop() en un juego
+available_items = {
+    "poción de salud": 10,
+    "pastel de la cura": 5,
+    "elixir verde": 20,
+    "sándwich de fuerza": 25,
+    "granos de resistencia": 15,
+    "estofado de poder": 30
+}
 
-### print(stack_id)
+health_points = 20
+health_points += available_items.pop("granos de resistencia", 0)
+health_points += available_items.pop("estofado de poder", 0)
+health_points += available_items.pop("pan místico", 0)
 
-### Delete a Key
-###.pop() works to delete items from a dictionary, when you know the key value.
-### raffle = {223842: "Teddy Bear", 872921: "Concert Tickets", 320291: "Gift Basket", 412123: "Necklace", 298787: "Pasta Maker"}
-### print(raffle.pop(320291, "No Prize"))
-### Prints "Gift Basket"
-### print(raffle)
-### Prints {223842: "Teddy Bear", 872921: "Concert Tickets", 412123: "Necklace", 298787: "Pasta Maker"}
-### print(raffle.pop(100000, "No Prize"))
-### Prints "No Prize"
-### print(raffle)
-### Prints {223842: "Teddy Bear", 872921: "Concert Tickets", 412123: "Necklace", 298787: "Pasta Maker"}
-### print(raffle.pop(872921, "No Prize"))
-### Prints "Concert Tickets"
-### print(raffle)
-### Prints {223842: "Teddy Bear", 412123: "Necklace", 298787: "Pasta Maker"}
+print(available_items)  # Elementos restantes
+print(health_points)    # Puntos de salud actualizados
 
-### available_items = {"health potion": 10, "cake of the cure": 5, "green elixir": 20, "strength sandwich": 25, "stamina grains": 15, "power stew": 30}
-### health_points = 20
+# Acceder a todas las claves
+# Usa keys() para obtener una lista de todas las claves en un diccionario:
+test_scores = {
+    "Grace": [80, 72, 90],
+    "Jeffrey": [88, 68, 81],
+    "Sylvia": [80, 82, 84],
+    "Pedro": [98, 96, 95],
+    "Martin": [78, 80, 78],
+    "Dina": [64, 60, 75]
+}
 
-### health_points += available_items.pop("stamina grains", 0)
-### health_points += available_items.pop("power stew", 0)
-### health_points += available_items.pop("mystic bread", 0)
+print(list(test_scores.keys()))  # Imprime todas las claves
+for student in test_scores.keys():
+    print(student)  # Imprime el nombre de cada estudiante
 
-### print(available_items)
-### print(health_points)
+# Acceder a todos los valores
+# Usa values() para obtener una lista de todos los valores en un diccionario:
+for score_list in test_scores.values():
+    print(score_list)
 
-### Get All Keys
-### test_scores = {"Grace":[80, 72, 90], "Jeffrey":[88, 68, 81], "Sylvia":[80, 82, 84], "Pedro":[98, 96, 95], "Martin":[78, 80, 78], "Dina":[64, 60, 75]}
-### print(list(test_scores))
-### Prints ["Grace", "Jeffrey", "Sylvia", "Pedro", "Martin", "Dina"]
+# Sumar valores
+num_exercises = {
+    "funciones": 10,
+    "sintaxis": 13,
+    "flujo de control": 15,
+    "bucles": 22,
+    "listas": 19,
+    "clases": 18,
+    "diccionarios": 18
+}
 
-### for student in test_scores.keys():
-###  print(student)
+total_exercises = 0
+for exercises in num_exercises.values():
+    total_exercises += exercises
+print(total_exercises)  # Imprime el total de ejercicios
 
-### user_ids = {"teraCoder": 100019, "pythonGuy": 182921, "samTheJavaMaam": 123112, "lyleLoop": 102931, "keysmithKeith": 129384}
-### num_exercises = {"functions": 10, "syntax": 13, "control flow": 15, "loops": 22, "lists": 19, "classes": 18, "dictionaries": 18}
+# Acceder a todos los elementos
+# Usa items() para obtener pares clave-valor:
+biggest_brands = {
+    "Apple": 184,
+    "Google": 141.7,
+    "Microsoft": 80,
+    "Coca-Cola": 69.7,
+    "Amazon": 64.8
+}
 
-### users = user_ids.keys()
-### lessons = num_exercises.keys()
+for company, value in biggest_brands.items():
+    print(f"{company} tiene un valor de {value} mil millones de dólares.")
 
-### print(users)
-### print(lessons)
+pct_women_in_occupation = {
+    "CEO": 28,
+    "Gerente de ingeniería": 9,
+    "Farmacéutico": 58,
+    "Médico": 40,
+    "Abogado": 37,
+    "Ingeniero aeroespacial": 9
+}
 
-### Get All Values
-### test_scores = {"Grace":[80, 72, 90], "Jeffrey":[88, 68, 81], "Sylvia":[80, 82, 84], "Pedro":[98, 96, 95], "Martin":[78, 80, 78], "Dina":[64, 60, 75]}
-
-### for score_list in test_scores.values():
-###  print(score_list)
-### num_exercises = {"functions": 10, "syntax": 13, "control flow": 15, "loops": 22, "lists": 19, "classes": 18, "dictionaries": 18}
-
-### total_exercises = 0
-
-### for exercises in num_exercises.values():
-###  total_exercises += exercises
-### print(total_exercises)
-
-### Get All Items
-### biggest_brands = {"Apple": 184, "Google": 141.7, "Microsoft": 80, "Coca-Cola": 69.7, "Amazon": 64.8}
-
-### for company, value in biggest_brands.items():
-###  print(company + " has a value of " + str(value) + " billion dollars. ")
-
-### pct_women_in_occupation = {"CEO": 28, "Engineering Manager": 9, "Pharmacist": 58, "Physician": 40, "Lawyer": 37, "Aerospace Engineer": 9}
-
-### for occupation, percentage in pct_women_in_occupation.items():
-###   print("Women make up " + str(percentage) + " percent of " + occupation + "s.") 
+for occupation, percentage in pct_women_in_occupation.items():
+    print(f"Las mujeres representan el {percentage}% de los {occupation}s.")
