@@ -1,3 +1,3 @@
-Tarea correspondiente al primer corte (Calculadora)...
+Tarea correspondiente al primer corte...(Calculadora)
 Thomas Alejandro Sarmiento Velandia
 Cod. 20231005075
